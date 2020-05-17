@@ -13,19 +13,20 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
     private float buttonCooler = .5f;
-    // private int buttonCount = 0;
     private int[] buttonCount = {0, 0, 0, 0};
 
     Vector2 movement;
 
     void Update()
     {
+        // x < 0
         if(Input.GetKeyDown(KeyCode.LeftArrow)){
             moveSpeed = 5f;
             GetComponent<SpriteRenderer>().flipX = true;
             runCheck(0);
 
         }
+        // x > 0
         else if(Input.GetKeyDown(KeyCode.RightArrow)){
             moveSpeed = 5f;
             GetComponent<SpriteRenderer>().flipX = false;
@@ -63,11 +64,11 @@ public class PlayerMovement : MonoBehaviour
     }    
 
     void runCheck(int i){
-        if(buttonCooler > 0 && buttonCount[i] == 1){
-            moveSpeed *= 1.5f;
+        if(buttonCooler > 0 && buttonCount[i] != 0){
+            moveSpeed *= 2f;
         }
         else{
-            buttonCooler = .5f;
+            buttonCooler = .75f;
             buttonCount[i] += 1;
         }
     }

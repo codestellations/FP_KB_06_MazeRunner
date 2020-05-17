@@ -60,8 +60,10 @@
      <Compile Include="Assets\Scripts\AStar\Pathfinding.cs" />
      <Compile Include="Assets\Scripts\AStar\Unit.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\Objects\Door.cs" />
      <Compile Include="Assets\Scripts\Objects\Key.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/Lenovo/Documents/GitHub/FP_KB_06_MazeRunner/Maze Runner/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

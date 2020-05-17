@@ -5,10 +5,16 @@ using UnityEngine;
 public class Key : MonoBehaviour
 {
     private bool isPickUp;
+    public Animator animator;
+
+    // PlayerStats player;
+
     // Start is called before the first frame update
     void Start()
     {
+        // player = GameObject.FindObjectsOfType<PlayerStats>();
         isPickUp = false;
+        animator.SetBool("isUsed", false);
     }
 
     // Update is called once per frame
@@ -31,6 +37,8 @@ public class Key : MonoBehaviour
     }
 
     void pickUp(){
-        Destroy(gameObject);
+        PlayerStats.foundKey = true;
+        animator.SetBool("isPickingUp", true);
+        animator.SetBool("isUsed", true);
     }
 }

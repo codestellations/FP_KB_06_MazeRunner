@@ -6,6 +6,7 @@ public class Unit : MonoBehaviour {
 	public Transform target;
 	public float speed = 20;
 	public float waitTime = 2f;
+	public Animator animator;
 	Vector2[] path;
 	int targetIndex;
 	public float lookRadius = 5f;
@@ -48,6 +49,7 @@ public class Unit : MonoBehaviour {
 		
 	IEnumerator FollowPath() {
 		if (path.Length > 0) {
+			animator.SetBool("isWalking", true);
 			targetIndex = 0;
 			Vector2 currentWaypoint = path [0];
 
@@ -60,11 +62,14 @@ public class Unit : MonoBehaviour {
 					currentWaypoint = path [targetIndex];
 				}
 
+				setDirection(currentWaypoint);
+
 				transform.position = Vector2.MoveTowards (transform.position, currentWaypoint, speed * Time.deltaTime);
 				yield return null;
 
 			}
 		}
+		animator.SetBool("isWalking", false);
 	}
 
 	public void OnDrawGizmos() {
@@ -82,6 +87,15 @@ public class Unit : MonoBehaviour {
 					Gizmos.DrawLine(path[i-1],path[i]);
 				}	
 			}
+		}
+	}
+
+	public void setDirection(Vector2 currentWaypoint){
+		if(currentWaypoint.x - transform.position.x < 0){
+			GetComponent<SpriteRenderer>().flipX = true;
+		}
+		else if(currentWaypoint.x - transform.position.x > 0){
+			GetComponent<SpriteRenderer>().flipX = false;
 		}
 	}
 }
