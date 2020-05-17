@@ -5,11 +5,15 @@ public class Unit : MonoBehaviour {
 	
 	public Transform target;
 	public float speed = 20;
-
 	Vector2[] path;
 	int targetIndex;
+	public float lookRadius = 5f;
+	Vector2 defaultPosition;
 
 	void Start() {
+		// defining enemy's original position
+		defaultPosition = (Vector2)transform.position;
+		// function for the pathfinding to start
 		StartCoroutine (RefreshPath ());
 	}
 
@@ -17,15 +21,27 @@ public class Unit : MonoBehaviour {
 		Vector2 targetPositionOld = (Vector2)target.position + Vector2.up; // ensure != to target.position initially
 			
 		while (true) {
-			if (targetPositionOld != (Vector2)target.position) {
-				targetPositionOld = (Vector2)target.position;
+			// if the player is within look radius
+			if(Vector2.Distance(transform.position, target.position) <= lookRadius){
+				if (targetPositionOld != (Vector2)target.position) {
+					targetPositionOld = (Vector2)target.position;
 
-				path = Pathfinding.RequestPath (transform.position, target.position);
-				StopCoroutine ("FollowPath");
-				StartCoroutine ("FollowPath");
+					path = Pathfinding.RequestPath (transform.position, target.position);
+					StopCoroutine ("FollowPath");
+					StartCoroutine ("FollowPath");
+				}
+
+				yield return new WaitForSeconds (.25f);
 			}
 
-			yield return new WaitForSeconds (.25f);
+			// else the enemy will go back to its original position
+			else{
+				yield return new WaitForSeconds(1f);
+				path = Pathfinding.RequestPath (transform.position, defaultPosition);
+				StopCoroutine ("FollowPath");
+				StartCoroutine ("FollowPath");
+
+			}
 		}
 	}
 		
@@ -51,17 +67,19 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void OnDrawGizmos() {
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, lookRadius);
 		if (path != null) {
 			for (int i = targetIndex; i < path.Length; i ++) {
 				Gizmos.color = Color.black;
-				//Gizmos.DrawCube((Vector3)path[i], Vector3.one *.5f);
+				Gizmos.DrawCube((Vector3)path[i], Vector3.one *.5f);
 
 				if (i == targetIndex) {
 					Gizmos.DrawLine(transform.position, path[i]);
 				}
 				else {
 					Gizmos.DrawLine(path[i-1],path[i]);
-				}
+				}	
 			}
 		}
 	}

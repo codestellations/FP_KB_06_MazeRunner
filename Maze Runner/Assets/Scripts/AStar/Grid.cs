@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class Grid : MonoBehaviour {
 
 	public bool displayGridGizmos;
-
 	public LayerMask unwalkableMask;
 	public Vector2 gridWorldSize;
 	public float nodeRadius;
@@ -35,8 +34,8 @@ public class Grid : MonoBehaviour {
 		for (int x = 0; x < gridSizeX; x ++) {
 			for (int y = 0; y < gridSizeY; y ++) {
 				Vector2 worldPoint = worldBottomLeft + Vector2.right * (x * nodeDiameter + nodeRadius) + Vector2.up * (y * nodeDiameter + nodeRadius);
-				// bool walkable = (Physics2D.OverlapCircle(worldPoint,nodeRadius,unwalkableMask) == null); // if no collider2D is returned by overlap circle, then this node is walkable
-				bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unwalkableMask));
+				bool walkable = (Physics2D.OverlapCircle(worldPoint,nodeRadius,unwalkableMask) == null); // if no collider2D is returned by overlap circle, then this node is walkable
+				// bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unwalkableMask));
 
 				grid[x,y] = new Node(walkable,worldPoint, x,y);
 			}
