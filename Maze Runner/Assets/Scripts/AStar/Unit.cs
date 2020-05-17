@@ -5,6 +5,7 @@ public class Unit : MonoBehaviour {
 	
 	public Transform target;
 	public float speed = 20;
+	public float waitTime = 2f;
 	Vector2[] path;
 	int targetIndex;
 	public float lookRadius = 5f;
@@ -13,6 +14,7 @@ public class Unit : MonoBehaviour {
 	void Start() {
 		// defining enemy's original position
 		defaultPosition = (Vector2)transform.position;
+		target = GameObject.FindGameObjectWithTag("Player").transform;
 		// function for the pathfinding to start
 		StartCoroutine (RefreshPath ());
 	}
@@ -36,11 +38,10 @@ public class Unit : MonoBehaviour {
 
 			// else the enemy will go back to its original position
 			else{
-				yield return new WaitForSeconds(1f);
+				yield return new WaitForSeconds(waitTime);
 				path = Pathfinding.RequestPath (transform.position, defaultPosition);
 				StopCoroutine ("FollowPath");
 				StartCoroutine ("FollowPath");
-
 			}
 		}
 	}
