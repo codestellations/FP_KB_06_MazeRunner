@@ -33,8 +33,10 @@ public class Unit : MonoBehaviour {
 					StopCoroutine ("FollowPath");
 					StartCoroutine ("FollowPath");
 				}
+				Debug.Log("gotcha");
+				PlayerStats.healthDecrease();
 
-				yield return new WaitForSeconds (.25f);
+				yield return new WaitForSeconds (.75f);
 			}
 
 			// else the enemy will go back to its original position

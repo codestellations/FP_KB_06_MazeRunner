@@ -7,10 +7,8 @@ public class Door : MonoBehaviour
     private bool isPickUp;
     public Animator animator;
 
-    // PlayerStats player;
     void Start()
     {
-        // player = GetComponent<PlayerStats>();
         isPickUp = false;
         animator.SetBool("isUnlocked", false);
     }
@@ -19,6 +17,7 @@ public class Door : MonoBehaviour
     {
         if(isPickUp && Input.GetKeyDown(KeyCode.Space)){
             if(PlayerStats.foundKey){
+                Debug.Log("opening the door please wait");
                 openLock();
             }
 

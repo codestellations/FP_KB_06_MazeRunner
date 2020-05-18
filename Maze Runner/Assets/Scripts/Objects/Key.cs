@@ -7,17 +7,12 @@ public class Key : MonoBehaviour
     private bool isPickUp;
     public Animator animator;
 
-    // PlayerStats player;
-
-    // Start is called before the first frame update
     void Start()
     {
-        // player = GameObject.FindObjectsOfType<PlayerStats>();
         isPickUp = false;
         animator.SetBool("isUsed", false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(isPickUp && Input.GetKeyDown(KeyCode.Space))
@@ -37,6 +32,7 @@ public class Key : MonoBehaviour
     }
 
     void pickUp(){
+        Debug.Log("found key yeay");
         PlayerStats.foundKey = true;
         animator.SetBool("isPickingUp", true);
         animator.SetBool("isUsed", true);

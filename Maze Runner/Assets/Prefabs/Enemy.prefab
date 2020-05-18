@@ -99,9 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 5
-  waitTime: 1
+  waitTime: 2
   animator: {fileID: 2423149968975478421}
-  lookRadius: 3
+  lookRadius: 2
 --- !u!50 &2423149968975478422
 Rigidbody2D:
   serializedVersion: 4
