@@ -43,7 +43,7 @@ public class Door : MonoBehaviour
             }     
         }
         else{
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 

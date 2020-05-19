@@ -118,7 +118,7 @@ public class Unit : MonoBehaviour {
 
 			yield return new WaitForSeconds(3f);
 
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+			SceneManager.LoadScene(sceneBuildIndex:0);
 		}
 	}
 }
