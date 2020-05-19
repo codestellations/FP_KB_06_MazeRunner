@@ -101,7 +101,7 @@ MonoBehaviour:
   speed: 5
   waitTime: 2
   animator: {fileID: 2423149968975478421}
-  lookRadius: 2
+  lookRadius: 3
 --- !u!50 &2423149968975478422
 Rigidbody2D:
   serializedVersion: 4

@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
     private bool isPickUp;
     public Animator animator;
 
+    public BoxCollider2D coll;
+    public BoxCollider2D next;
+
     void Start()
     {
         isPickUp = false;
+        next.enabled = false;
         animator.SetBool("isUnlocked", false);
     }
 
@@ -29,8 +34,13 @@ public class Door : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision){
-        if(collision.gameObject.tag.Equals("Player")){
-            isPickUp = true;
+        if(coll.enabled == true){
+            if(collision.gameObject.tag.Equals("Player")){
+                isPickUp = true;
+            }     
+        }
+        else{
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
     }
 
@@ -41,6 +51,8 @@ public class Door : MonoBehaviour
     }
 
     void openLock(){
-        animator.SetBool("isUnlocked", true);     
+        animator.SetBool("isUnlocked", true); 
+        coll.enabled = false;
+        next.enabled = true;
     }
 }
