@@ -6,6 +6,7 @@ public class Key : MonoBehaviour
 {
     private bool isPickUp;
     public Animator animator;
+    public DialogueManager dialogue;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class Key : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision){
         if(collision.gameObject.tag.Equals("Player")){
             isPickUp = true;
+            dialogue.RequestSentence(5, 6);
         }
     }
 
@@ -32,9 +34,11 @@ public class Key : MonoBehaviour
     }
 
     void pickUp(){
-        Debug.Log("found key yeay");
-        PlayerStats.foundKey = true;
-        animator.SetBool("isPickingUp", true);
-        animator.SetBool("isUsed", true);
+        if(PlayerStats.foundKey == false){
+            dialogue.RequestSentence(6, 7);
+            PlayerStats.foundKey = true;
+            animator.SetBool("isPickingUp", true);
+            animator.SetBool("isUsed", true);
+        }
     }
 }

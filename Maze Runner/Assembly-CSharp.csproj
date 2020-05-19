@@ -50,7 +50,9 @@
      <Compile Include="Assets\Scripts\AStar\Pathfinding.cs" />
      <Compile Include="Assets\Scripts\AStar\Unit.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\Manager\LevelManager.cs" />
      <Compile Include="Assets\Scripts\Menu\Dialogue.cs" />
+     <Compile Include="Assets\Scripts\Menu\DialogueManager.cs" />
      <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Objects\Door.cs" />
      <Compile Include="Assets\Scripts\Objects\Key.cs" />

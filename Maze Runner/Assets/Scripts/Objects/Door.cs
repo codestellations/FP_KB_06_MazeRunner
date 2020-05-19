@@ -10,6 +10,8 @@ public class Door : MonoBehaviour
 
     public BoxCollider2D coll;
     public BoxCollider2D next;
+    public DialogueManager dialogue;
+    bool once = true;
 
     void Start()
     {
@@ -22,13 +24,11 @@ public class Door : MonoBehaviour
     {
         if(isPickUp && Input.GetKeyDown(KeyCode.Space)){
             if(PlayerStats.foundKey){
-                Debug.Log("opening the door please wait");
                 openLock();
             }
 
             else{
-                // put error message here
-                Debug.Log("no key found yet");
+                dialogue.RequestSentence(11, 12);
             }
         }
     }
@@ -37,6 +37,9 @@ public class Door : MonoBehaviour
         if(coll.enabled == true){
             if(collision.gameObject.tag.Equals("Player")){
                 isPickUp = true;
+                if(once){
+                    dialogue.RequestSentence(8, 9);
+                }
             }     
         }
         else{
@@ -51,6 +54,7 @@ public class Door : MonoBehaviour
     }
 
     void openLock(){
+        dialogue.RequestSentence(10, 11);
         animator.SetBool("isUnlocked", true); 
         coll.enabled = false;
         next.enabled = true;

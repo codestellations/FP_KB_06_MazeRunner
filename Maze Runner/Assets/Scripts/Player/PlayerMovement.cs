@@ -14,8 +14,10 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     private float buttonCooler = .5f;
     private int[] buttonCount = {0, 0, 0, 0};
-
     Vector2 movement;
+    Vector2 defaultPosition;
+    public DialogueManager dialogue;
+    bool once = true;
 
     void Update()
     {
@@ -25,6 +27,11 @@ public class PlayerMovement : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = true;
             runCheck(0);
 
+            if(once){
+                dialogue.RequestSentence(3, 5);
+                once = false;
+            }
+            
         }
         // x > 0
         else if(Input.GetKeyDown(KeyCode.RightArrow)){

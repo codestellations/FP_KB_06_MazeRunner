@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Unit : MonoBehaviour {
 	
@@ -11,6 +12,8 @@ public class Unit : MonoBehaviour {
 	int targetIndex;
 	public float lookRadius = 5f;
 	Vector2 defaultPosition;
+	bool once = true;
+	public DialogueManager dialogue;
 
 	void Start() {
 		// defining enemy's original position
@@ -26,6 +29,11 @@ public class Unit : MonoBehaviour {
 		while (true) {
 			// if the player is within look radius
 			if(Vector2.Distance(transform.position, target.position) <= lookRadius){
+				if(once){
+					dialogue.RequestSentence(7, 8);
+					once = false;
+           	 	}
+
 				if (targetPositionOld != (Vector2)target.position) {
 					targetPositionOld = (Vector2)target.position;
 
@@ -33,10 +41,9 @@ public class Unit : MonoBehaviour {
 					StopCoroutine ("FollowPath");
 					StartCoroutine ("FollowPath");
 				}
-				Debug.Log("gotcha");
-				PlayerStats.healthDecrease();
+				StartCoroutine(gotPlayer());
 
-				yield return new WaitForSeconds (.75f);
+				yield return new WaitForSeconds (waitTime);
 			}
 
 			// else the enemy will go back to its original position
@@ -59,6 +66,7 @@ public class Unit : MonoBehaviour {
 				if ((Vector2)transform.position == currentWaypoint) {
 					targetIndex++;
 					if (targetIndex >= path.Length) {
+						
 						yield break;
 					}
 					currentWaypoint = path [targetIndex];
@@ -68,7 +76,6 @@ public class Unit : MonoBehaviour {
 
 				transform.position = Vector2.MoveTowards (transform.position, currentWaypoint, speed * Time.deltaTime);
 				yield return null;
-
 			}
 		}
 		animator.SetBool("isWalking", false);
@@ -98,6 +105,20 @@ public class Unit : MonoBehaviour {
 		}
 		else if(currentWaypoint.x - transform.position.x > 0){
 			GetComponent<SpriteRenderer>().flipX = false;
+		}
+	}
+
+	IEnumerator gotPlayer(){
+		if(PlayerStats.health != 0){
+			PlayerStats.healthDecrease();
+			yield break;
+		}
+		else{
+			dialogue.RequestSentence(9, 10);
+
+			yield return new WaitForSeconds(3f);
+
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
 		}
 	}
 }
