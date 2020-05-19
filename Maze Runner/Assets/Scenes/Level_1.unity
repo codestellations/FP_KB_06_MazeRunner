@@ -3452,16 +3452,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4273459453244235760, guid: b83488bcc381e174b9bf44fa3250b498,
-        type: 3}
-      propertyPath: sentences.Array.size
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 4273459453244235760, guid: b83488bcc381e174b9bf44fa3250b498,
-        type: 3}
-      propertyPath: sentences.Array.data[12]
-      value: Looks like we need a key to open this door.
-      objectReference: {fileID: 0}
     - target: {fileID: 4273459454263696241, guid: b83488bcc381e174b9bf44fa3250b498,
         type: 3}
       propertyPath: m_Name

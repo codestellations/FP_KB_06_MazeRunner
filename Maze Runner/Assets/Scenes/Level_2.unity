@@ -144,6 +144,16 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4273459453244235760, guid: b83488bcc381e174b9bf44fa3250b498,
+        type: 3}
+      propertyPath: sentences.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273459453244235760, guid: b83488bcc381e174b9bf44fa3250b498,
+        type: 3}
+      propertyPath: sentences.Array.data[12]
+      value: It looks like we need a key to open this door.
+      objectReference: {fileID: 0}
     - target: {fileID: 4273459454263696241, guid: b83488bcc381e174b9bf44fa3250b498,
         type: 3}
       propertyPath: m_Name
@@ -467,6 +477,11 @@ PrefabInstance:
       propertyPath: dialogue
       value: 
       objectReference: {fileID: 667930327}
+    - target: {fileID: 2423149968975478424, guid: 0c05806d84a72a2468c598bf650bd07c,
+        type: 3}
+      propertyPath: lookRadius
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2423149968975478425, guid: 0c05806d84a72a2468c598bf650bd07c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2256,6 +2271,11 @@ PrefabInstance:
       propertyPath: dialogue
       value: 
       objectReference: {fileID: 667930327}
+    - target: {fileID: 2423149968975478424, guid: 0c05806d84a72a2468c598bf650bd07c,
+        type: 3}
+      propertyPath: lookRadius
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2423149968975478425, guid: 0c05806d84a72a2468c598bf650bd07c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2338,12 +2358,12 @@ PrefabInstance:
     - target: {fileID: 4699900521801430327, guid: 6421ed945ead2e04eb28b64f145dc873,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.01
+      value: -6.12
       objectReference: {fileID: 0}
     - target: {fileID: 4699900521801430327, guid: 6421ed945ead2e04eb28b64f145dc873,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.72
+      value: 2.05
       objectReference: {fileID: 0}
     - target: {fileID: 4699900521801430327, guid: 6421ed945ead2e04eb28b64f145dc873,
         type: 3}

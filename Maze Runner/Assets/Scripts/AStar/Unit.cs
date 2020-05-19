@@ -6,11 +6,11 @@ public class Unit : MonoBehaviour {
 	
 	public Transform target;
 	public float speed = 20;
-	public float waitTime = 2f;
+	public float waitTime = .75f;
 	public Animator animator;
 	Vector2[] path;
 	int targetIndex;
-	public float lookRadius = 5f;
+	public float lookRadius = 10f;
 	Vector2 defaultPosition;
 	bool once = true;
 	public DialogueManager dialogue;

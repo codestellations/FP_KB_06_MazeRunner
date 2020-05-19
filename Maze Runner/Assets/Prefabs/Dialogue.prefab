@@ -215,6 +215,7 @@ MonoBehaviour:
     key.
   - Friend, forgive me for I have fallen.
   - Great job, friend!
+  - Looks like we need a key to open this door.
   index: 0
   typingSpeed: 0.02
   dialogue: {fileID: 4273459453531276826}
