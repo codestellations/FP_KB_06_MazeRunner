@@ -46,7 +46,6 @@ public class DialogueManager : MonoBehaviour
             }
             else{
                 textDisplay.text = "";
-                Debug.Log("ini else 1");
                 ActivateText(false);
             }
             sentences[index] = null;

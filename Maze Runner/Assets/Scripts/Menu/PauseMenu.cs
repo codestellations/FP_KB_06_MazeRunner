@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pausePanel;
+    public TextMeshProUGUI textDisplay;
 
     void Update(){
-        if(Input.GetMouseButtonDown(0)){
-            ResumeGame();
+        if(pausePanel.activeSelf){
+            if(Input.GetMouseButtonDown(0)){
+                ResumeGame();
+            }
         }
+        textDisplay.text = "Health : " + PlayerStats.health;
     }
 
     public void PauseGame(){

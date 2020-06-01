@@ -11,7 +11,7 @@ public class PlayerStats : MonoBehaviour
     {
         foundKey = false;
         coinCount = 0;
-        health = 3;
+        health = 20;
     }
 
     public static void healthDecrease(){

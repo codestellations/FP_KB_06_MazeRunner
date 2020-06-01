@@ -4,13 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class Unit : MonoBehaviour {
 	
-	public Transform target;
+	private Transform target;
 	public float speed = 20;
 	public float waitTime = .75f;
 	public Animator animator;
 	Vector2[] path;
 	int targetIndex;
-	public float lookRadius = 10f;
+	public float lookRadius = 6f;
 	Vector2 defaultPosition;
 	bool once = true;
 	public DialogueManager dialogue;
@@ -41,14 +41,13 @@ public class Unit : MonoBehaviour {
 					StopCoroutine ("FollowPath");
 					StartCoroutine ("FollowPath");
 				}
-				StartCoroutine(gotPlayer());
 
 				yield return new WaitForSeconds (waitTime);
 			}
 
 			// else the enemy will go back to its original position
 			else{
-				yield return new WaitForSeconds(waitTime);
+				yield return new WaitForSeconds(2f);
 				path = Pathfinding.RequestPath (transform.position, defaultPosition);
 				StopCoroutine ("FollowPath");
 				StartCoroutine ("FollowPath");
@@ -80,6 +79,12 @@ public class Unit : MonoBehaviour {
 		}
 		animator.SetBool("isWalking", false);
 	}
+
+	void OnTriggerEnter2D(Collider2D collision){
+        if(collision.gameObject.tag.Equals("Player")){
+            StartCoroutine(gotPlayer());
+        }
+    }
 
 	public void OnDrawGizmos() {
 		Gizmos.color = Color.red;
